@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using FinalMVCProject.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace FinalMVCProject.Data
@@ -9,5 +10,7 @@ namespace FinalMVCProject.Data
             : base(options)
         {
         }
+
+        public DbSet<Car> Cars { get; set; }
     }
 }

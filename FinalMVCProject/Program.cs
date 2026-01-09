@@ -1,4 +1,6 @@
 using FinalMVCProject.Data;
+using FinalMVCProject.Services;
+using FinalMVCProject.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +21,8 @@ namespace FinalMVCProject
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddScoped<ICarService, CarService>();
 
             var app = builder.Build();
 

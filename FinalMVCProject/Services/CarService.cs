@@ -51,5 +51,15 @@ namespace FinalMVCProject.Services
                 await _context.SaveChangesAsync(); 
             } 
         }
+
+        public async Task<IEnumerable<Car>> GetLatestAsync(int count) 
+        { 
+            return await _context.Cars
+                .Include(c => c.Category)
+                .Include(c => c.Manufacturer)
+                .OrderByDescending(c => c.Id)
+                .Take(count)
+                .ToListAsync(); 
+        }
     }
 }

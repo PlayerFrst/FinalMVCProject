@@ -1,22 +1,35 @@
-using System.Diagnostics;
 using FinalMVCProject.Models;
+using FinalMVCProject.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace FinalMVCProject.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ICarService _carService;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
+
+        public HomeController(ICarService carService) 
+        { 
+            _carService = carService;
         }
 
 
-        public IActionResult Index()
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
+
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var latestCars = await _carService.GetLatestAsync(5); // показваме 5 коли
+            return View(latestCars);
         }
 
         public IActionResult Privacy()

@@ -1,8 +1,33 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model IEnumerable<FinalMVCProject.Models.Car>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-4">
+    <h2 class="mb-4">Последно добавени автомобили</h2>
+
+    @if (!Model.Any())
+    {
+        <p>Все още няма добавени автомобили.</p>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var car in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">@car.Brand @car.Model</h5>
+                            <p class="card-text">
+                                <strong>Година:</strong> @car.Year <br />
+                                <strong>Категория:</strong> @car.Category?.Name <br />
+                                <strong>Производител:</strong> @car.Manufacturer?.Name
+                            </p>
+                            <a asp-controller="Cars" asp-action="Details" asp-route-id="@car.Id" class="btn btn-primary">
+                                Детайли
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
 </div>

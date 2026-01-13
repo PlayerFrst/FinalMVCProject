@@ -26,8 +26,6 @@ namespace FinalMVCProject.Models
         public Category Category { get; set; }  
         public string OwnerId { get; set; } 
         public ApplicationUser Owner { get; set; } 
-        public int? ManufacturerId { get; set; } 
-        public Manufacturer Manufacturer { get; set; } 
         public ICollection<Review> Reviews { get; set; } = new List<Review>();
     }
 }

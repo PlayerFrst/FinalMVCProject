@@ -19,7 +19,6 @@
                             <p class="card-text">
                                 <strong>Година:</strong> @car.Year <br />
                                 <strong>Категория:</strong> @car.Category?.Name <br />
-                                <strong>Производител:</strong> @car.Manufacturer?.Name
                             </p>
                             <a asp-controller="Cars" asp-action="Details" asp-route-id="@car.Id" class="btn btn-primary">
                                 Детайли

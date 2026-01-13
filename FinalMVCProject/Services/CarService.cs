@@ -16,7 +16,6 @@ namespace FinalMVCProject.Services
         public async Task<IEnumerable<Car>> GetAllAsync() 
         { 
             return await _context.Cars.Include(c => c.Category)
-                .Include(c => c.Manufacturer)
                 .Include(c => c.Owner)
                 .ToListAsync(); 
         }
@@ -24,7 +23,6 @@ namespace FinalMVCProject.Services
         { 
             return await _context.Cars
                 .Include(c => c.Category)
-                .Include(c => c.Manufacturer)
                 .Include(c => c.Owner)
                 .FirstOrDefaultAsync(c => c.Id == id);
         }
@@ -56,9 +54,14 @@ namespace FinalMVCProject.Services
         { 
             return await _context.Cars
                 .Include(c => c.Category)
-                .Include(c => c.Manufacturer)
                 .OrderByDescending(c => c.Id)
                 .Take(count)
+                .ToListAsync(); 
+        }
+
+        public async Task<IEnumerable<Category>> GetCategoriesAsync() 
+        { 
+            return await _context.Categories
                 .ToListAsync(); 
         }
     }

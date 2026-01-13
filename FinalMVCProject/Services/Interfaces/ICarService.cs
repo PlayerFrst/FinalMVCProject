@@ -10,5 +10,7 @@ namespace FinalMVCProject.Services.Interfaces
         Task UpdateAsync(Car car);
         Task DeleteAsync(int id);
         Task<IEnumerable<Car>> GetLatestAsync(int count);
+
+        Task<IEnumerable<Category>> GetCategoriesAsync(); 
     }
 }

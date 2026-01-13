@@ -12,9 +12,6 @@ namespace FinalMVCProject.Models
             MinimumLength = ValidationConstants.Category.NameMinLength)]
         public string Name { get; set; }
 
-        [StringLength(ValidationConstants.Category.DescriptionMaxLength)]
-        public string Description { get; set; }
-
         public ICollection<Car> Cars { get; set; } = new List<Car>();
     }
 }
